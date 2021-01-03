@@ -10,13 +10,12 @@
 // }
 //create class per readme
 
-class Employee {
-    constructor(id, name, title) {
+ class Employee {
+    constructor (name, id, email) {
         this.id = id;
         this.name = name;
-        this.title = title;
         this.email = email;
-        this.github = github;
+       
     }
     //enter get syntax
     getId() {
@@ -25,16 +24,14 @@ class Employee {
     getName() {
         return this.name;
     }
-    getTitle() {
-        return this.title;
-    }
     getEmail() {
         return this.email;
     }
-    getGithub() {
-        return this.github;
+    getRole() {
+        return "Employee";
     }
 }
 
+module.exports = Employee;
 
 
