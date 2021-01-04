@@ -14,6 +14,96 @@ const render = require("./lib/htmlRenderer");
 // Write code to use inquirer to gather information about the development team members,
 // and to create objects for each team member (using the correct classes as blueprints!)
 
+const employees = [];
+
+function managerPrompt() {
+    inquirer
+    .prompt([
+        {
+            type: 'input',
+            name: 'id',
+            message: 'What is the employee ID?',
+        },
+        {
+            type: 'input',
+            name: 'name',
+            message: 'What is the employee name?',
+        },
+        {
+            type: 'input',
+            name: 'email',
+            message: 'What is the employee email?',
+        },
+        {
+            type: 'input',
+            name: 'officeNumber',
+            message: 'What is the employee office number?'
+        },
+    ])
+    .then(function(answers) {
+        var manager = new Manager(answers.id, answers.name, answers.email, answers.officeNumber);
+    })
+}
+
+function engineerPrompt() {
+    inquirer
+    .prompt([
+        {
+            type: 'input',
+            name: 'id',
+            message: 'What is the employee ID?',
+        },
+        {
+            type: 'input',
+            name: 'name',
+            message: 'What is the employee name?',
+        },
+        {
+            type: 'input',
+            name: 'email',
+            message: 'What is the employee email?',
+        },
+        {
+            type: 'input',
+            name: 'github',
+            message: 'What is the employee github?',
+        },
+    ])
+    .then(function(answers) {
+        var engineer = new Engineer(answers.id, answers.name, answers.email, answers.github);
+    })
+}
+
+function internPrompt() {
+    inquirer
+    .prompt([
+        {
+            type: 'input',
+            name: 'id',
+            message: 'What is the employee ID?',
+        },
+        {
+            type: 'input',
+            name: 'name',
+            message: 'What is the employee name?',
+        },
+        {
+            type: 'input',
+            name: 'email',
+            message: 'What is the employee email?',
+        },
+        {
+            type: 'input',
+            name: 'school',
+            message: 'What is the employee school?',
+        },
+    ])
+    .then(function(answers) {
+        var intern = new Intern(answers.id, answers.name, answers.email, answers.school);
+    })
+}
+
+
 // After the user has input all employees desired, call the `render` function (required
 // above) and pass in an array containing all employee objects; the `render` function will
 // generate and return a block of HTML including templated divs for each employee!
