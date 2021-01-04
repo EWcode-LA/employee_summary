@@ -108,6 +108,37 @@ function internPrompt() {
 // above) and pass in an array containing all employee objects; the `render` function will
 // generate and return a block of HTML including templated divs for each employee!
 
+function mainMenu() {
+    inquirer
+    .prompt([{
+        type: 'list',
+        name: 'selection',
+        message: 'Which employee type do you wish to add?',
+        choices: ['Manager', 'Engineer', 'Intern', 'Quit']
+    }])
+    .then(function(answers) {
+        switch(answers.selection) {
+            case 'Manager':
+                managerPrompt();
+                mainMenu();
+                break;
+
+            case 'Engineer':
+                engineerPrompt();
+                mainMenu();
+                break;
+             
+            case 'Intern':
+                internPrompt();
+                mainMenu();
+                break;
+                
+            default:
+                renderEmployeeCards();
+        }
+    })
+}
+
 // After you have your html, you're now ready to create an HTML file using the HTML
 // returned from the `render` function. Now write it to a file named `team.html` in the
 // `output` folder. You can use the variable `outputPath` above target this location.
