@@ -22,17 +22,17 @@ function managerPrompt() {
         {
             type: 'input',
             name: 'id',
-            message: 'What is the employee ID?',
+            message: 'What is the employee ID?'
         },
         {
             type: 'input',
             name: 'name',
-            message: 'What is the employee name?',
+            message: 'What is the employee name?'
         },
         {
             type: 'input',
             name: 'email',
-            message: 'What is the employee email?',
+            message: 'What is the employee email?'
         },
         {
             type: 'input',
@@ -42,6 +42,9 @@ function managerPrompt() {
     ])
     .then(function(answers) {
         var manager = new Manager(answers.id, answers.name, answers.email, answers.officeNumber);
+        employees.push(manager);
+        console.log('New manager added');
+        mainMenu();
     })
 }
 
@@ -51,26 +54,29 @@ function engineerPrompt() {
         {
             type: 'input',
             name: 'id',
-            message: 'What is the employee ID?',
+            message: 'What is the employee ID?'
         },
         {
             type: 'input',
             name: 'name',
-            message: 'What is the employee name?',
+            message: 'What is the employee name?'
         },
         {
             type: 'input',
             name: 'email',
-            message: 'What is the employee email?',
+            message: 'What is the employee email?'
         },
         {
             type: 'input',
             name: 'github',
-            message: 'What is the employee github?',
+            message: 'What is the employee github?'
         },
     ])
     .then(function(answers) {
         var engineer = new Engineer(answers.id, answers.name, answers.email, answers.github);
+        employees.push(engineer);
+        console.log('New engineer added');
+        mainMenu();
     })
 }
 
@@ -80,26 +86,28 @@ function internPrompt() {
         {
             type: 'input',
             name: 'id',
-            message: 'What is the employee ID?',
+            message: 'What is the employee ID?'
         },
         {
             type: 'input',
             name: 'name',
-            message: 'What is the employee name?',
+            message: 'What is the employee name?'
         },
         {
             type: 'input',
             name: 'email',
-            message: 'What is the employee email?',
+            message: 'What is the employee email?'
         },
         {
             type: 'input',
             name: 'school',
-            message: 'What is the employee school?',
+            message: 'What is the employee school?'
         },
     ])
     .then(function(answers) {
         var intern = new Intern(answers.id, answers.name, answers.email, answers.school);
+        employees.push(intern);
+        console.log('New intern added');
     })
 }
 
@@ -138,8 +146,15 @@ function mainMenu() {
         }
     })
 }
+function renderEmployeeCards() {
+    console.log('Generating team.hteml...')
+    fs.writeFileSync(outputPath, render(employees));
+    console.log('HTML file saved.');
+}
 
-render(employees);
+mainMenu();
+
+// render(employees);
 
 // After you have your html, you're now ready to create an HTML file using the HTML
 // returned from the `render` function. Now write it to a file named `team.html` in the
