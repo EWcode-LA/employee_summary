@@ -108,6 +108,7 @@ function internPrompt() {
         var intern = new Intern(answers.id, answers.name, answers.email, answers.school);
         employees.push(intern);
         console.log('New intern added');
+        mainMenu();
     })
 }
 
@@ -128,17 +129,14 @@ function mainMenu() {
         switch(answers.selection) {
             case 'Manager':
                 managerPrompt();
-                mainMenu();
                 break;
 
             case 'Engineer':
                 engineerPrompt();
-                mainMenu();
                 break;
              
             case 'Intern':
                 internPrompt();
-                mainMenu();
                 break;
                 
             default:
@@ -147,7 +145,7 @@ function mainMenu() {
     })
 }
 function renderEmployeeCards() {
-    console.log('Generating team.hteml...')
+    console.log('Generating team.html...')
     fs.writeFileSync(outputPath, render(employees));
     console.log('HTML file saved.');
 }
